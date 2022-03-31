@@ -1,0 +1,32 @@
+# shared configuration over all services
+
+mona:
+  security:
+    #secret key to be used for authorizations, should be provided as randomly generated env variable during boot
+    secret: GENERATE_UNIQUE_SECRET
+
+    curation:
+      #token to be used for curation and should not expire. It's depend on the mona.security.secret and so needs to be updated
+      #everytime the secret changes
+      token: GENERATE_UNIQUE_TOKEN
+
+# Spring data configuration
+spring:
+  data:
+    #for mongo db
+    mongodb:
+      host: 127.0.0.1
+      port: 27017
+      database: mona
+    #elasticsearch configuration
+    elasticsearch:
+      cluster-nodes: localhost:9300
+
+#metrics settings regarding healths and if we permit service endpoints to be restarted
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false

@@ -1,0 +1,38 @@
+#this is the docker specific configuration for the discovery host
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka/
+
+# Spring data overridden configuration
+spring:
+  #rabbitmq server configuration
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+  #repositories
+  data:
+    #mongo configuration
+    mongodb:
+      host: mongodb
+    #elasticsearch configuration
+    elasticsearch:
+      cluster-nodes:  elasticsearch_master:9300
+      cluster-name: mona-cluster
+
+#trace spring cloud events
+cloud:
+  bus:
+    trace:
+      enabled:  true
+
+#required for the curation runner in the docker compose file
+mona:
+  bus:
+    exclusive: false
+
+#here we define the applications logging profile
+logging:
+  config: classpath:logback-docker.xml

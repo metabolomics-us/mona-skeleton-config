@@ -1,0 +1,8 @@
+#required for the curation runner in the docker compose file
+mona:
+  bus:
+    exclusive: false
+  rest:
+    server:
+      host: proxy
+      port: 8080

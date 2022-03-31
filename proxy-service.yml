@@ -1,0 +1,129 @@
+# Defines all the routes based on provided services
+zuul:
+  ignoredServices: "*"
+
+  # Defines all our available routes
+  routes:
+    # Access to all spectra and persistence services
+    spectra:
+      path: /rest/spectra/**
+      stripPrefix: false
+      sensitiveHeaders:
+      serviceId: persistence-service
+
+    massbank:
+      path: /rest/upload/**
+      stripPrefix: false
+      sensitiveHeaders:
+      serviceId: persistence-service
+
+    # Access to submitters
+    submitters:
+      path: /rest/submitters/**
+      stripPrefix: false
+      sensitiveHeaders:
+      serviceId: persistence-service
+
+    # Access to metadata
+    metadata:
+      path: /rest/metaData/**
+      stripPrefix: false
+      sensitiveHeaders:
+      serviceId: persistence-service
+
+    # Access to statistics services
+    statistics:
+      path: /rest/statistics/**
+      stripPrefix: false
+      sensitiveHeaders:
+      serviceId: persistence-service
+
+    # Access to tags
+    tags:
+      path: /rest/tags/**
+      stripPrefix: false
+      sensitiveHeaders:
+      serviceId: persistence-service
+
+    # Access to news services
+    news:
+      path: /rest/news/**
+      stripPrefix: false
+      sensitiveHeaders:
+      serviceId: persistence-service
+
+    # Access to feedback services
+    feedback:
+      path: /rest/feedback/**
+      stripPrefix: false
+      sensitiveHeaders:
+      serviceId: persistence-service
+
+    # Access to authentication services
+    authentication :
+      path: /rest/auth/**
+      stripPrefix: false
+      sensitiveHeaders:
+      serviceId: auth-service
+
+    # Access for user management
+    users:
+      path: /rest/users/**
+      stripPrefix: false
+      sensitiveHeaders:
+      serviceId: auth-service
+
+    # Access for webhooks
+    webhooks:
+      path: /rest/webhooks/**
+      stripPrefix: false
+      sensitiveHeaders:
+      serviceId: webhook-service
+
+    # Access to the curation services
+    curation:
+      path: /rest/curation/**
+      stripPrefix: false
+      sensitiveHeaders:
+      serviceId: curation-service
+      retryable: false
+      
+    compoundConversion:
+      path: /rest/conversion/**
+      stripPrefix: false
+      sensitiveHeaders:
+      serviceId: curation-service
+      retryable: false
+
+    # Access to the downloader
+    downloads:
+      path: /rest/downloads/**
+      stripPrefix: false
+      sensitiveHeaders:
+      serviceId: downloader-service
+
+    # Access to the similarity service
+    similarity:
+      path: /rest/similarity/**
+      stripPrefix: false
+      sensitiveHeaders:
+      serviceId: similarity-service
+  
+    # Read-only spectra repository
+    repository:
+      path: /repository/**
+      stripPrefix: false
+      sensitiveHeaders:
+      serviceId: repository-service
+
+    # Access to the MoNA git repository
+    git:
+      path: /git/**
+      stripPrefix: false
+      sensitiveHeaders:
+      serviceId: repository-service
+
+  # Connection settings to avoid to many timeouts
+  host:
+    socket-timeout-millis: 60000
+    connect-timeout-millis: 60000

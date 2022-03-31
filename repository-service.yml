@@ -1,0 +1,5 @@
+#This specifies where we are storing data in the MoNA spectral
+#repository module. And will also provide us with the git repository
+#for tracking purposes
+mona:
+  repository: /data/mona

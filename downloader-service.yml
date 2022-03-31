@@ -1,0 +1,3 @@
+# This specifies where we are storing data for the MoNA downloader service
+mona:
+  downloads: /data/mona
